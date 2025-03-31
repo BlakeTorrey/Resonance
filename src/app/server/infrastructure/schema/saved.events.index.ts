@@ -1,11 +1,9 @@
-import { Schema, model, type Document } from 'mongoose';
+import { Schema,Types, model, type Document } from 'mongoose';
 
-import { UserDocument } from './user';
-import { EventDocument } from './event';
 
 export interface IsavedEvents extends Document {
-    userId: UserDocument['_id'];
-    eventId: EventDocument['_id'];
+    userId: Types.ObjectId;
+    eventId: Types.ObjectId;
 }
 
 const savedEventsSchema = new Schema<IsavedEvents>(
@@ -13,12 +11,10 @@ const savedEventsSchema = new Schema<IsavedEvents>(
         userId: {
             type: Schema.Types.ObjectId,
             required: true,
-            ref: 'User',
         },
         eventId: {
             type: Schema.Types.ObjectId,
             required: true,
-            ref: 'Event',
         },
     }
 );
@@ -30,4 +26,4 @@ savedEventsSchema.index(
 
 const savedEvents = model<IsavedEvents>('SavedEvents', savedEventsSchema);
 
-export default savedEvents;
+export { savedEvents };

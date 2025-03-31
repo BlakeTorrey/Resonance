@@ -1,11 +1,9 @@
-import { Schema, model, type Document } from 'mongoose';
+import { Schema, Types, model, type Document } from 'mongoose';
 
-import { UserDocument } from './user';
-import { ArtistDocument } from './artist';
 
 export interface IsavedArtists extends Document {
-    userId: UserDocument['_id'];
-    artistId: ArtistDocument['_id'];
+    userId: Types.ObjectId;
+    artistId: Types.ObjectId;
 }
 
 const savedArtistsSchema = new Schema<IsavedArtists>(
@@ -13,12 +11,10 @@ const savedArtistsSchema = new Schema<IsavedArtists>(
         userId: {
             type: Schema.Types.ObjectId,
             required: true,
-            ref: 'User',
         },
         artistId: {
             type: Schema.Types.ObjectId,
             required: true,
-            ref: 'Artist',
         },
     }
 );
@@ -30,4 +26,4 @@ savedArtistsSchema.index(
 
 const savedArtists = model<IsavedArtists>('SavedArtists', savedArtistsSchema);
 
-export default savedArtists;
+export { savedArtists} ;

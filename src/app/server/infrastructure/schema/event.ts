@@ -1,7 +1,7 @@
 import { Schema, model, type Document } from 'mongoose';
 
 export interface EventDocument extends Document {
-    eventId: string;
+    _id: string;
     eventName: string;
     description: string;
     date: Date;
@@ -23,4 +23,4 @@ const eventSchema = new Schema<EventDocument>({
 
 const Event = model<EventDocument>('Event', eventSchema);
 
-export default Event;
+export { Event };

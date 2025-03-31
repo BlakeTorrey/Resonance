@@ -23,4 +23,4 @@ const artistSchema = new Schema<ArtistDocument>({
 
 const Artist = model<ArtistDocument>('Artist', artistSchema);
 
-export default Artist;
+export { Artist };
