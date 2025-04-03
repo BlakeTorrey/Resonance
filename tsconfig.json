@@ -2,6 +2,8 @@
   "compilerOptions": {
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,7 +20,10 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
+    "typeRoots": ["node_modules/@types"],
     "paths": {
+      "*": ["*", "node_modules/*", "src/*"],
       "@/*": ["./src/*"]
     }
   },
