@@ -1,6 +1,7 @@
 import { container, DependencyContainer, InjectionToken, ValueProvider } from 'tsyringe';
 
 import { setupRepositoriesDependencyInjection } from './dependency-registries/repositories';
+import { setupProviderDependencyInjection } from './dependency-registries/providers';
 
 export class DependencyRegistry {
   public container: DependencyContainer;
@@ -9,6 +10,7 @@ export class DependencyRegistry {
     const childContainer = container.createChildContainer();
 
     setupRepositoriesDependencyInjection(childContainer);
+    setupProviderDependencyInjection(childContainer);
 
     this.container = childContainer;
   }

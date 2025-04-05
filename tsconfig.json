@@ -3,7 +3,8 @@
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    //TODO: wtf
+    "emitDecoratorMetadata": false,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,7 +13,8 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    //TODO: wtf 2
+    "isolatedModules": false,
     "jsx": "preserve",
     "incremental": true,
     "plugins": [
