@@ -1,7 +1,7 @@
-import { Schema, type Document } from 'mongoose';
+import { Schema, model, type Document } from 'mongoose';
 
 export interface EventDocument extends Document {
-    eventId: string;
+    _id: string;
     eventName: string;
     description: string;
     date: Date;
@@ -20,6 +20,7 @@ const eventSchema = new Schema<EventDocument>({
     },
 });
 
-// might add in methods to remove events where the date has already passed.
 
-export default eventSchema;
+const Event = model<EventDocument>('Event', eventSchema);
+
+export { Event };
