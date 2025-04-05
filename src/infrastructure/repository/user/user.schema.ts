@@ -1,16 +1,12 @@
-import { Schema, model, type Document } from 'mongoose';
+import { Schema, Types, model, type Document } from 'mongoose';
+import { User } from '@/domain/entities/user';
 
-export interface UserDocument extends Document {
-    id: string;
-    username: string;
-    email: string;
-    password: string;
-    emailUpdates: boolean;
-    isCorrectPassword(password: string): Promise<boolean>;
+export interface UserDocument extends Document, Omit<User, 'id'> {
+    _id: Types.ObjectId;
 }
 
 
-const userSchema = new Schema<UserDocument>(
+export const userSchema = new Schema<UserDocument>(
     {
         username: {
             type: String,
@@ -35,6 +31,4 @@ const userSchema = new Schema<UserDocument>(
 
 
 
-const User = model<UserDocument>('User', userSchema);
 
-export { User };
