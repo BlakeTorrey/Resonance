@@ -1,13 +1,12 @@
-import { Schema, model, type Document } from 'mongoose';
+import { Schema, Types, model, type Document } from 'mongoose';
+import { Artist } from '@/domain/entities/artist';
 
-export interface ArtistDocument extends Document {
-    artistId: string;
-    artistName: string;
-    image: string,
-    link: string;
+export interface ArtistDocument extends Document, Omit<Artist, 'id'> {
+    _id: Types.ObjectId;
 }
 
-const artistSchema = new Schema<ArtistDocument>({
+
+export const artistSchema = new Schema<ArtistDocument>({
     artistName: {
         type: String,
         required: true,
@@ -21,6 +20,3 @@ const artistSchema = new Schema<ArtistDocument>({
 });
 
 
-const Artist = model<ArtistDocument>('Artist', artistSchema);
-
-export { Artist };

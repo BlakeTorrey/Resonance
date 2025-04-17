@@ -32,6 +32,7 @@ class UserRepositoryAdapter implements UserRepositoryPort {
     }
 }
 
+
 const getUserRepositoryInstance = (mongoose: Mongoose): UserRepositoryAdapter =>
     new UserRepositoryAdapter(mongoose.model<UserDocument>('User', userSchema));
 

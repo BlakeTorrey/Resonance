@@ -58,4 +58,3 @@ export const connectToMongo = async (mongooseInstance: Mongoose, connectionStrin
         throw error;
     }
 };
-
